@@ -8,4 +8,4 @@
 
 # vagrant symlinks
 ln -s /vagrant/etc/salt /etc/salt
-ln -s /vagrant/srv /srv
+ln -s /vagrant/srv/salt /srv/salt
