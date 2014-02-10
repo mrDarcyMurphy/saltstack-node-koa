@@ -1,7 +1,6 @@
 saltstack-node-koa
 ==================
 
-
 ## Local Development
 
 To begin:
@@ -19,11 +18,15 @@ This will:
 * Clone a koa based app.
 * Run the app.
 
+### TODO
+
+* setup pm2 to start and monitor the app.
+* ensure the app starts with harmony flag turned on.
+
 ### Caveats
 
 * This is only a proof of concept.
 * It probably isn't ready for production
 * It's probably unnecessary to *build* node, but whatever.
-* The koa app isn't using forever or pm2 to monitor the app.
 * You'll probably want to secure your minion.
 * And maybe build an actual app. Maybe.
