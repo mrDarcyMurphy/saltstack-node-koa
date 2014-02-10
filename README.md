@@ -1,9 +1,9 @@
 saltstack-node-koa
 ==================
 
-## Local Development
+If this helped you, please let me know.
 
-To begin:
+## To Begin
 
 1. Install Vagrant and Virtual Box.
 2. `vagrant up`
@@ -20,8 +20,11 @@ This will:
 
 ### TODO
 
-* setup pm2 to start and monitor the app.
-* ensure the app starts with harmony flag turned on.
+* create an unprivileged user to boot the app
+* find a better way to install pm2.
+* put necessary pm2 configuration in that user's `~/.pm2/custom_options.sh` [*](https://github.com/Unitech/pm2#configuration--customization)
+* start the app with pm2 with harmony flag turned on.
+* ensure the port works right, and heck, maybe even forward it to the host.
 
 ### Caveats
 
