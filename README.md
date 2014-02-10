@@ -23,6 +23,7 @@ This will:
 * create an unprivileged user to boot the app
 * find a better way to install pm2.
 * put necessary pm2 configuration in that user's `~/.pm2/custom_options.sh` [*](https://github.com/Unitech/pm2#configuration--customization)
+* alternatively, try pm2's [json configuration](https://github.com/Unitech/pm2#multi-process-json-declaration).
 * start the app with pm2 with harmony flag turned on.
 * ensure the port works right, and heck, maybe even forward it to the host.
 
