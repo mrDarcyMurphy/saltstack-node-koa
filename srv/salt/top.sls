@@ -5,3 +5,4 @@ base:
     - npm
     - npm.pm2
     - koa
+    - koa.start

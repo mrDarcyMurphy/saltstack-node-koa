@@ -1,19 +1,18 @@
-/src/koa:
-  file.directory:
-    - makedirs: True
-
 https://github.com/mrDarcyMurphy/hello-koa.git:
   git.latest:
     - rev: master
     - target: /src/hello-koa
 
+/src/hello-koa/pids:
+  file.directory:
+    - makedirs: True
+
+/src/hello-koa/logs:
+  file.directory:
+    - makedirs: True
+
 npm install --production:
-  cmd.run:
+  cmd.wait:
     - cwd: /src/hello-koa
     - require:
       - pkg: npm
-
-pm2 start processes.json:
-  cmd.run:
-    - cwd: /src/hello-koa
-    - unless: test ! -e /usr/bin/pm2

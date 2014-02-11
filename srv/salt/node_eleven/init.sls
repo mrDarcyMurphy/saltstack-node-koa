@@ -22,6 +22,8 @@ get-node:
     - source:  salt://node_eleven/node-v{{ version }}.tar.gz
     - require:
       - pkg: build-dependencies
+
+unpack-node:
   cmd.wait:
     - cwd: /usr/src
     - names:
@@ -37,4 +39,4 @@ make-node:
       - 'make --jobs={{ make_jobs }}'
       - 'checkinstall --install=yes --pkgname=nodejs --pkgversion "{{ version }}" --default'
     - watch:
-      - cmd: get-node
+      - cmd: unpack-node
