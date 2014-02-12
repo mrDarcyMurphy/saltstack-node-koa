@@ -1,2 +1,4 @@
-master: localhost
 id: saltykoa
+master: localhost
+file_client: local
+user: mercury

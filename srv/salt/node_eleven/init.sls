@@ -1,42 +1,20 @@
-{% set node = pillar.get('node', {}) -%}
-{% set version = node.get('version', '0.11.11') -%}
-{% set checksum = node.get('checksum', '1e330b4fbb6f7bb858a0b37d8573dd4956f40885') -%}
-{% set make_jobs = node.get('make_jobs', '1') -%}
-
-build-dependencies:
+nodejs-dependencies:
   pkg.installed:
     - names:
-      - libssl-dev
-      - pkg-config
+      - python-software-properties
+      - python
       - build-essential
-      - curl
-      - gcc
       - g++
-      - checkinstall
+      - make
 
-
-## Get Node
-get-node:
-  file.managed:
-    - name: /usr/src/node-v{{ version }}.tar.gz
-    - source:  salt://node_eleven/node-v{{ version }}.tar.gz
-    - require:
-      - pkg: build-dependencies
-
-unpack-node:
-  cmd.wait:
-    - cwd: /usr/src
+add-nodejs-devel-repo:
+  cmd.run:
     - names:
-      - tar -zxvf node-v{{ version }}.tar.gz
-    - watch:
-      - file: /usr/src/node-v{{ version }}.tar.gz
+      - sudo add-apt-repository -y ppa:chris-lea/node.js-devel
+      - sudo apt-get update
 
-make-node:
+install-nodejs:
   cmd.wait:
-    - cwd: /usr/src/node-v{{ version }}
-    - names:
-      - './configure'
-      - 'make --jobs={{ make_jobs }}'
-      - 'checkinstall --install=yes --pkgname=nodejs --pkgversion "{{ version }}" --default'
+    - name: sudo apt-get install -y nodejs
     - watch:
-      - cmd: unpack-node
+      - cmd: add-nodejs-devel-repo

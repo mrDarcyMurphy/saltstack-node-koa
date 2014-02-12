@@ -1,5 +1,7 @@
 base:
   'saltykoa':
+    - users.mercury
+    - salt
     - git
     - node_eleven
     - npm
