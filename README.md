@@ -1,7 +1,7 @@
 saltstack-node-koa
 ==================
 
-If this helped you, please let me know.
+This is still a work in progres, as are my sysadmin skills. If you've got any ideas or suggestions on how to improve things, make an issue or [ping me](https://twitter.com/mrDarcyMurphy).
 
 ## To Begin
 
@@ -16,21 +16,16 @@ This will:
 * Symlink the saltstack configuration to /etc/salt and /srv/salt.
 * Compile and Install node-v0.11.11.
 * Clone a koa based app.
-* Run the app.
+* Run the app via pm2.
 
 ### TODO
 
-* create an unprivileged user to boot the app
-* find a better way to install pm2.
-* put necessary pm2 configuration in that user's `~/.pm2/custom_options.sh` [*](https://github.com/Unitech/pm2#configuration--customization)
-* alternatively, try pm2's [json configuration](https://github.com/Unitech/pm2#multi-process-json-declaration).
-* start the app with pm2 with harmony flag turned on.
-* ensure the port works right, and heck, maybe even forward it to the host.
+* Start the app with pm2 with harmony flag turned on. It's easy enough to do manually, but has proved more difficult than expected through saltstack.
+* Setup nginx. When I get pm2 to do it's thing, then I run into the issue of node not having access to port 80. So... nginx ftw.
 
 ### Caveats
 
 * This is only a proof of concept.
 * It probably isn't ready for production
-* It's probably unnecessary to *build* node, but whatever.
-* You'll probably want to secure your minion.
+* You'll probably want to secure your minion too.
 * And maybe build an actual app. Maybe.
