@@ -1,10 +1,10 @@
 base:
   'saltykoa':
-    - users.mercury
-    - salt
+    - build
+    - ppa
     - git
-    - node_eleven
-    - npm
-    - npm.pm2
+    - users.mercury
+    - nodejs
+    - nodejs.pm2
     - koa
     - koa.start

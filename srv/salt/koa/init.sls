@@ -1,7 +1,11 @@
 /src/hello-koa:
   file.directory:
     - user: mercury
+    - group: mercury
     - makedirs: True
+    - recurse:
+      - user
+      - group
 
 https://github.com/mrDarcyMurphy/hello-koa.git:
   git.latest:
@@ -26,10 +30,8 @@ https://github.com/mrDarcyMurphy/hello-koa.git:
       - group
 
 npm install --production:
-  cmd.wait:
+  cmd.run:
     - cwd: /src/hello-koa
     - user: mercury
-    - require:
-      - pkg: npm
     - watch:
       - git: https://github.com/mrDarcyMurphy/hello-koa.git
