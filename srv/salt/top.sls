@@ -7,4 +7,3 @@ base:
     - nodejs
     - nodejs.pm2
     - koa
-    - koa.start
