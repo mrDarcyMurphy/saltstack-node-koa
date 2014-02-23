@@ -4,10 +4,11 @@ include:
 pm2-install:
   cmd.run:
     - name: npm install -g pm2
-    - unless: test -e /usr/bin/pm2
+    - unless: test -e /home/mercury/bin/pm2
+    - user: mercury
     - require:
-      - pkg: nodejs
       - pkg: build-essential
+      - cmd: nodejs-make
 
 # This hangs for some reason, haven't debugged it yet.
 # adding -s flag for silent may fix it
@@ -25,3 +26,10 @@ pm2-custom-options:
     - source: salt://nodejs/pm2/custom_options.sh
     - user: mercury
     - group: mercury
+
+# pm2-ping:
+#   cmd.run:
+#     - name: pm2 ping
+#     - require:
+#       - pkg: nodejs
+#       - cmd: pm2-install

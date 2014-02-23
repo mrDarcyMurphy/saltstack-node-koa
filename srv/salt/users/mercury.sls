@@ -8,6 +8,7 @@ mercury:
     - shell: /bin/bash
     - groups:
       - sudo
+      - staff
 
 # this directory is linked, otherwise it'd be chowned as well.
 # /etc/salt:

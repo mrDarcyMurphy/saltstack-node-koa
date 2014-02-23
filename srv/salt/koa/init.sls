@@ -46,16 +46,16 @@ hello-koa:
 
 
 # Not sure yet if I should make these part of highstate or not
-# start-koa:
-#   cmd.run:
-#     - name: pm2 start processes.json
-#     - cwd: /src/hello-koa
-#     - user: mercury
-#     - shell: /bin/bash
-#     - require:
-#       - pkg: nodejs
-#       - git: hello-koa
-#       - cmd: pm2-install
+start-koa:
+  cmd.run:
+    - name: DEBIAN_FRONTEND=noninteractive pm2 start processes.json
+    - cwd: /src/hello-koa
+    - user: mercury
+    - shell: /bin/bash
+    - onlyif: test -e /home/mercury/bin/pm2
+    - require:
+      - git: hello-koa
+      - cmd: pm2-install
 
 # restart-koa:
 #   cmd.run:
